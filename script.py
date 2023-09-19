@@ -44,12 +44,14 @@ def insert_data_into_excel(iterable_object, excel_file, column_name, column_numb
 
   
 def get_distance(origin, destination):
-
-  client = googlemaps.Client(key=api_key)
-  distance_matrix = client.distance_matrix(origins=[origin], destinations=[destination])
-  distance = distance_matrix["rows"][0]["elements"][0]["distance"]["value"]
-  distance = distance/1000
-  return distance
+    client = googlemaps.Client(key=api_key)
+    try:
+      distance_matrix = client.distance_matrix(origins=[origin], destinations=[destination])
+      dis = distance_matrix["rows"][0]["elements"][0]["distance"]["value"]
+      dis = dis/1000
+      return dis
+    except KeyError:
+      return "Not Found"
 
 if __name__ == "__main__":
   origin = "18.43455403564981, 79.10711311605102"
@@ -60,8 +62,8 @@ if __name__ == "__main__":
   distances = list()
 
   
-  # insert_data_into_excel(mandals, 'output1.xlsx', "Mandal Name", 2)
-  # insert_data_into_excel(schools, 'output1.xlsx', "School Name", 4)
+  insert_data_into_excel(mandals, 'output1.xlsx', "Mandal Name", 2)
+  insert_data_into_excel(schools, 'output1.xlsx', "School Name", 4)
   
 
   for i in range(len(mandals)):
@@ -110,13 +112,12 @@ if __name__ == "__main__":
     if (mandals[i] == "VEENAVANKA"):
       destination.append(f"{schools[i]},Veenavanka")
     
-
   for i in range(len(destination)):
       distances.append(get_distance(origin, destination[i]))
       
-  print(distances)
+  print(len(distances))
   
-  # insert_data_into_excel(distances, 'output1.xlsx', "Distance", 6)
+  insert_data_into_excel(distances, 'output1.xlsx', "Distance", 6)
       
   
 # ----------------------------------------------
