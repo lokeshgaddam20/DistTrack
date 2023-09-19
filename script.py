@@ -25,6 +25,7 @@ def get_distance(origin, destination):
   client = googlemaps.Client(key=api_key)
   distance_matrix = client.distance_matrix(origins=[origin], destinations=[destination])
   distance = distance_matrix["rows"][0]["elements"][0]["distance"]["value"]
+  distance = distance/1000
   return distance
 
 if __name__ == "__main__":
@@ -37,8 +38,8 @@ if __name__ == "__main__":
   for i in range(len(mandals)):
     if (mandals[i] == "THIMMAPUR"):
       destination.append(f"{schools[i]},Thimmapur")
-  # for i in range(len(destination)):
-  #     distance = get_distance(origin, destination[i])
+  for i in range(len(destination)):
+      print(get_distance(origin, destination[i]))
     
   # print(destination)
 
