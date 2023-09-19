@@ -19,8 +19,6 @@ def get_school():
   schools = df["School Name"].tolist()
   return schools
 
-# demo
-
 # Function to insert data into Excel sheet
 def insert_data_into_excel(iterable_object, excel_file, column_name, column_number):
     try:
