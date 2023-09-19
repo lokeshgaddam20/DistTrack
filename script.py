@@ -2,9 +2,8 @@ import requests
 from dotenv import load_dotenv
 import os
 import googlemaps
-# import getpara as gp
 import pandas as pd
-
+import openpyxl
 
 load_dotenv()
 
@@ -14,6 +13,16 @@ def get_mandal():
   df = pd.read_excel("schools.xlsx")
   mandals = df["MANDAL"].tolist()
   return mandals
+
+def create_excel_sheet(iterable_object_data, column_name, column_no):
+  wb = openpyxl.Workbook()
+  ws = wb.create_sheet()
+
+  ws.cell(row=1, column=column_no).value = column_name
+
+  for row_index, row_data in enumerate(iterable_object_data):
+    ws.cell(row=row_index + 2, column=column_no).value = row_data
+  wb.save('output.xlsx')
 
 def get_school():
   df = pd.read_excel("schools.xlsx")
@@ -33,14 +42,18 @@ if __name__ == "__main__":
   schools = get_school()
   mandals = get_mandal()
   destination = list()
-  # print(len(mandals))
-  # print(len(schools))
-  for i in range(len(mandals)):
-    if (mandals[i] == "THIMMAPUR"):
-      destination.append(f"{schools[i]},Thimmapur")
-  for i in range(len(destination)):
-      print(get_distance(origin, destination[i]))
+  create_excel_sheet(mandals, "Mandal Name",2)
+  create_excel_sheet(schools, "School Name",4)
+  # for i in range(len(mandals)):
+  #     destination.append(f"{schools[i]},Thimmapur")
+  # for j in range(len(destination)):
+  #     print(get_distance(origin, destination[j]))
     
-  # print(destination)
+    
+    # if (mandals[i] == "THIMMAPUR"):
 
+
+
+
+  # print(destination)
 #   print(f"The distance between {origin} and {destination} is {distance/1000} kilometers.")
