@@ -3,7 +3,7 @@ from dotenv import load_dotenv
 import os
 import googlemaps
 import pandas as pd
-import openpyxl
+
 
 load_dotenv()
 
