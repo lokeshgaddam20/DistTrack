@@ -15,62 +15,62 @@ api_key = os.getenv('API_KEY')
 #   return mandals
 
 def get_school():
-  df = pd.read_excel("schools.xlsx")
-  schools = df["School Name"].tolist()
+  df = pd.read_excel("GANNERUVARAM.xlsx")
+  schools = df["MANDAL"].tolist()
   return schools
 
 # Function to insert data into Excel sheet
-def insert_data_into_excel(iterable_object, excel_file, column_name, column_number):
-    try:
-        # Read the existing Excel file into a DataFrame
-        df = pd.read_excel(excel_file)
+# def insert_data_into_excel(iterable_object, excel_file, column_name, column_number):
+#     try:
+#         # Read the existing Excel file into a DataFrame
+#         df = pd.read_excel(excel_file)
         
-        # Check if the specified column name already exists, if not, create it
-        if column_name not in df.columns:
-            df[column_name] = None
+#         # Check if the specified column name already exists, if not, create it
+#         if column_name not in df.columns:
+#             df[column_name] = None
         
-        # Iterate through the iterable object and insert data into the specified column
-        for i, data in enumerate(iterable_object):
-            df.at[i, column_name] = data
+#         # Iterate through the iterable object and insert data into the specified column
+#         for i, data in enumerate(iterable_object):
+#             df.at[i, column_name] = data
         
-        # Write the updated DataFrame back to the Excel file
-        df.to_excel(excel_file, index=False)
-        print(f"Data inserted into '{column_name}' in '{excel_file}' successfully.")
-    except Exception as e:
-        print(f"An error occurred: {str(e)}")
+#         # Write the updated DataFrame back to the Excel file
+#         df.to_excel(excel_file, index=False)
+#         print(f"Data inserted into '{column_name}' in '{excel_file}' successfully.")
+#     except Exception as e:
+#         print(f"An error occurred: {str(e)}")
 
 
   
-def get_distance(origin, destination):
-    client = googlemaps.Client(key=api_key)
-    try:
-      distance_matrix = client.distance_matrix(origins=[origin], destinations=[destination])
-      dis = distance_matrix["rows"][0]["elements"][0]["distance"]["value"]
-      dis = dis/1000
-      return dis
-    except KeyError:
-      return "Not Found"
+# def get_distance(origin, destination):
+#     client = googlemaps.Client(key=api_key)
+#     try:
+#       distance_matrix = client.distance_matrix(origins=[origin], destinations=[destination])
+#       dis = distance_matrix["rows"][0]["elements"][0]["distance"]["value"]
+#       dis = dis/1000
+#       return dis
+#     except KeyError:
+#       return "Not Found"
 
 if __name__ == "__main__":
   origin = "18.43455403564981, 79.10711311605102"
   schools = get_school()
 #   mandals = get_mandal()
   
-  destination = list()
-  distances = list()
+#   destination = list()
+#   distances = list()
 
-  
-  insert_data_into_excel(mandals, 'output1.xlsx', "Mandal Name", 2)
-  insert_data_into_excel(schools, 'output1.xlsx', "School Name", 4)
+  print(schools)
+#   insert_data_into_excel(mandals, 'output1.xlsx', "Mandal Name", 2)
+#   insert_data_into_excel(schools, 'dist-ganneruvaram.xlsx', "School Name", 4)
   
 
     
-  for i in range(len(destination)):
-      distances.append(get_distance(origin, destination[i]))
+#   for i in range(len(destination)):
+#       distances.append(get_distance(origin, destination[i]))
       
-  print(len(distances))
+#   print(len(distances))
   
-  insert_data_into_excel(distances, 'output1.xlsx', "Distance", 6)
+#   insert_data_into_excel(distances, 'dist-ganneruvaram.xlsx', "Distance", 6)
   
   
   
