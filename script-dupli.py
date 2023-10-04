@@ -48,64 +48,11 @@ if __name__ == "__main__":
   origin = "18.43455403564981, 79.10711311605102"
   schools = get_school()
   schools = [schools[item] + " ,Ganneruvaram" for item in range(1,len(schools))]
-#   mandals = get_mandal()
   
   destination = list()
   distances = list()
-
-#   insert_data_into_excel(mandals, 'output1.xlsx', "Mandal Name", 2)
+  
   insert_data_into_excel(schools, 'dist-ganneruvaram.xlsx', "School Name", 2)
     
   for i in range(len(destination)):
       distances.append(get_distance(origin, schools[i]))
-      
-#   print(len(distances))
-  
-#   insert_data_into_excel(distances, 'dist-ganneruvaram.xlsx', "Distance", 6)
-  
-  
-#   for i in range(len(mandals)):
-#     if (mandals[i] == "CHIGURUMAMIDI"):
-#       destination.append(f"{schools[i]},Chigurumamidi")
-#   for i in range(len(mandals)):
-#     if (mandals[i] == "CHOPPADANDI"):
-#       destination.append(f"{schools[i]},Choppadandi")
-#   for i in range(len(mandals)):
-#     if (mandals[i] == "ELLANDAKUNTA"):
-#       destination.append(f"{schools[i]},Ellandakunta")
-#   for i in range(len(mandals)):
-#     if (mandals[i] == "GANGADHARA"):
-#       destination.append(f"{schools[i]},Gangadhara")
-#   for i in range(len(mandals)):
-#     if (mandals[i] == "GANNERVARAM"):
-#       destination.append(f"{schools[i]},Gannervaram")
-#   for i in range(len(mandals)):
-#     if (mandals[i] == "HUZURABAD"):
-#       destination.append(f"{schools[i]},Huzurabad")
-#   for i in range(len(mandals)):
-#     if (mandals[i] == "KARIMNAGAR"):
-#       destination.append(f"{schools[i]},Karimnagar")
-#   for i in range(len(mandals)):
-#     if (mandals[i] == "KARIMNAGAR (RURAL)"):
-#       destination.append(f"{schools[i]},Karimnagar (Rural)")
-#   for i in range(len(mandals)):
-#     if (mandals[i] == "KOTHAPALLE"):
-#       destination.append(f"{schools[i]},Kothapalle")
-#   for i in range(len(mandals)):
-#     if (mandals[i] == "MANAKONDUR"):
-#       destination.append(f"{schools[i]},Manakondur")
-#   for i in range(len(mandals)):
-#     if (mandals[i] == "RAMADUGU"):
-#       destination.append(f"{schools[i]},Ramadugu")
-#   for i in range(len(mandals)):
-#     if (mandals[i] == "SAIDAPUR (V)"):
-#       destination.append(f"{schools[i]},Saipadur")
-#   for i in range(len(mandals)):
-#     if (mandals[i] == "SHANKARAPATNAM"):
-#       destination.append(f"{schools[i]},Shankarapatnam")
-#   for i in range(len(mandals)):
-#     if (mandals[i] == "THIMMAPUR"):
-#       destination.append(f"{schools[i]},Thimmapur")
-#   for i in range(len(mandals)):
-#     if (mandals[i] == "VEENAVANKA"):
-#       destination.append(f"{schools[i]},Veenavanka")
