@@ -9,11 +9,6 @@ load_dotenv()
 
 api_key = os.getenv('API_KEY')
 
-# def get_mandal():
-#   df = pd.read_excel("schools.xlsx")
-#   mandals = df["MANDAL"].tolist()
-#   return mandals
-
 def get_school():
   df = pd.read_excel("gmandal.xlsx")
   schools = df["SCHOOL NAME"].tolist()
