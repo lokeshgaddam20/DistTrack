@@ -52,6 +52,8 @@ if __name__ == "__main__":
   destination = list()
   distances = list()
   
+  print(schools)
+  
   insert_data_into_excel(schools, 'dist-ganneruvaram.xlsx', "School Name", 2)
     
   for i in range(len(destination)):
