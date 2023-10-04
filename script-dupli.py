@@ -52,7 +52,7 @@ def get_distance(origin, destination):
 if __name__ == "__main__":
   origin = "18.43455403564981, 79.10711311605102"
   schools = get_school()
-  schools = [item + " ,Ganneruvaram" for item in schools]
+  schools = [schools[item] + " ,Ganneruvaram" for item in range(1,len(schools))]
 #   mandals = get_mandal()
   
   destination = list()
